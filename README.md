@@ -55,11 +55,11 @@ The task is to create an interactive chatbot or virtual assistant for the Depart
 
 10. Tele Law Services:
 
-   Inform users about how to avail Tele Law Services.
+    Inform users about how to avail Tele Law Services.
 
-11. Case Status:
+12. Case Status:
 
-   Users should be able to inquire about the current status of their cases.
+    Users should be able to inquire about the current status of their cases.
 
 ### Features of the Chatbot:
 1. Interactive User Interface:
