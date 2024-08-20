@@ -1,24 +1,25 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
 
 class NinjaScraper(scrapy.Spider):
     name = "doj-website"
 
-    def startRequest(self):
+    def start_requests(self):
         urls = [
-            "doj.gov.in",
+            "https://doj.gov.in/",
         ]
         for url in urls:
-            yield scrapy.Request(url = url, callback = self.parseRequest)
+            yield scrapy.Request(url = url, callback = self.parse_request)
 
-    def parseRequest(self, response):
+    def parse_request(self, response):
         filename = "output.txt"
-        with open(filename, 'wb') as file:
-            file.write(response.body)
+        with open(filename, 'w') as file:
+            file.write(response.text)
         print(response)
-        self.log(f"Saved file {filename}")
+        self.logger.info(f"Saved file {filename}")
 
-def initCrawler():
-    crawler = CrawlerProcess()
+def init_crawler():
+    crawler = CrawlerProcess(get_project_settings())
     crawler.crawl(NinjaScraper)
     crawler.start()

@@ -11,5 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Scraper
-from NinjaScraper import initCrawler
-initCrawler()
+from NinjaScraper import init_crawler
+
+if __name__ == "__main__":
+    init_crawler()
