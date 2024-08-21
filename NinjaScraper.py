@@ -3,23 +3,39 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
 class NinjaScraper(scrapy.Spider):
-    name = "doj-website"
+    name = 'ninja-scraper'
+    start_urls = ['https://doj.gov.in/']
 
-    def start_requests(self):
-        urls = [
-            "https://doj.gov.in/",
-        ]
-        for url in urls:
-            yield scrapy.Request(url = url, callback = self.parse_request)
+    def __init__(self, *args, **kwargs):
+        super(NinjaScraper, self).__init__(*args, **kwargs)
+        self.file = open('output.txt', 'w', encoding='utf-8')
+    
+    def parse(self, response):
+        # HTML tag parsing
+        title = response.xpath('//title/text()').get()
+        paragraphs = response.css('p::text').getall()
 
-    def parse_request(self, response):
-        filename = "output.txt"
-        with open(filename, 'w') as file:
-            file.write(response.text)
-        print(response)
-        self.logger.info(f"Saved file {filename}")
+        # Write to file
+        self.file.write(f'Title: {title}\n')
+        self.file.write('Paragraphs:\n')
+        self.file.write('\n'.join(paragraphs))
+        self.file.write('\n\n')
 
-def init_crawler():
+        # Follow links
+        self.file.write('Links: \n' + str(response.css('a::attr(href)').getall()))
+        for href in response.css('a::attr(href)').getall():
+            next_page = response.urljoin(href)
+            if next_page.startswith('http'):
+                yield scrapy.Request(next_page, callback=self.parse)
+        
+        # Logger
+        self.logger.info('Successfully Scraped!')
+
+    def close(self, reason):
+        print(f'File Closed: {reason}')
+        self.file.close()
+
+def start_crawler():
     crawler = CrawlerProcess(get_project_settings())
     crawler.crawl(NinjaScraper)
     crawler.start()
