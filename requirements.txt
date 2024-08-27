@@ -1,4 +1,5 @@
 python-dotenv
 numpy
 scrapy
+urllib
 llama-index
