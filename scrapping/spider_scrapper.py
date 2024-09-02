@@ -15,7 +15,7 @@ class NinjaScraper(scrapy.Spider):
     name = 'ninja-scraper'
     start_urls = [
             'https://doj.gov.in/',
-            # 'https://cdnbbsr.s3waas.gov.in/'
+            'https://cdnbbsr.s3waas.gov.in/'
                   ]
 
     def __init__(self, *args, **kwargs):
@@ -35,11 +35,9 @@ class NinjaScraper(scrapy.Spider):
 
 
     # pickle to directory
-    def save_doc (self, doc : Document) -> None:
-        print("---- saving document ----")
-        with open(os.path.join(FILE, f"{doc.id_}"), "wb") as file : 
+    def save_doc (self, doc : Document, suffix : str) -> None:
+        with open(os.path.join(FILE, f"{doc.id_}{suffix}"), "wb") as file : 
             pickle.dump(doc,file)
-        print("---- saved ----")
         return None
     
 
@@ -55,8 +53,6 @@ class NinjaScraper(scrapy.Spider):
     # parse pdf pages
     def parse_pdf (self, response) -> None:
         site_url = str(response).split()[1][:-1]
-        title = response.xpath('//title/text()').get() 
-        title = " ".join(str(title).split("|")[:-2]) 
 
         name = self.save_pdf(site_url)
         if name is not None : 
@@ -64,10 +60,10 @@ class NinjaScraper(scrapy.Spider):
             doc = self.pdf_reader.load_data(path)[0]
             doc.metadata = { 
                 "url" : site_url,
-                "title": title,
+                "title": name,
             }
-            doc.id_ = title
-            self.save_doc(doc)
+            doc.id_ = name
+            self.save_doc(doc,"_md")
 
         return None
 
@@ -88,7 +84,7 @@ class NinjaScraper(scrapy.Spider):
             "title": title,
         }
         doc.id_ = title
-        self.save_doc(doc)
+        self.save_doc(doc,"_html")
         return None
     
 
@@ -96,7 +92,7 @@ class NinjaScraper(scrapy.Spider):
     def parse(self, response, *args, **kwargs):
         site_url = str(response).split()[1][:-1]
         
-        if urlparse(site_url) == self.allowed_domain[0] : # url 
+        if urlparse(site_url).netloc == self.allowed_domain[0] : # url 
             self.parse_url(response)
         else : # pdf 
             self.parse_pdf(response)
