@@ -12,12 +12,11 @@ from llama_index.llms.huggingface import HuggingFaceLLM
 from transformers import AutoTokenizer, BitsAndBytesConfig
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
-from vector_store.weaviate import init_client
-
+from database.vector_store import weaviate
 
 # to avoiding warning
-from pydantic._internal import _fields, _config
-_fields.model_config['protected_namespaces'] = ()
+# from pydantic._internal import _fields, _config
+# _fields.model_config['protected_namespaces'] = ()
 
 # loading environmental variables 
 dotenv.load_dotenv()
@@ -80,7 +79,7 @@ Settings.tokenizer = AutoTokenizer.from_pretrained(str(LLM))
 storage_context = StorageContext.from_defaults(
         # setting global Vector Store
         vector_store = WeaviateVectorStore(
-                        weaviate_client= init_client(str(EMBED_MODEL_NAME)),
+                        weaviate_client= weaviate.init_client(str(EMBED_MODEL_NAME)),
                         index_name= "WeaviateIndex"
                         ) 
         )

@@ -1,4 +1,5 @@
-from settings.global_config import *
+import os
+import global_config
 from scrapping import doc_to_node 
 from llama_index.core import Document, VectorStoreIndex
 import time
@@ -11,7 +12,7 @@ if __name__ == "__main__" :
     node_dir = os.path.join(os.getcwd(), "scrapped-data")
     doc_list = doc_to_node.save_node_from_doc(doc_dir, node_dir)
 
-    if doc_list : 
+    if isinstance(doc_list, list): 
         assert isinstance(doc_list[0], Document) , "cannot get doc_list"
         print("\nbuilding index\n")
         start = time.time()
