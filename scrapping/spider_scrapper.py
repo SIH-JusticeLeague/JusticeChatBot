@@ -8,7 +8,7 @@ import os
 import pickle
 from pathlib import Path
 
-FILE = os.path.join(os.getcwd(), "scrapped-data")
+FILE = os.path.join(os.getcwd(), "scrapped-data", "doc-bin")
 print(FILE)
 
 class NinjaScraper(scrapy.Spider):
