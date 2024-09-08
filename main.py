@@ -1,6 +1,6 @@
 import os
 from pprint import pprint
-from global_config import *
+from config import *
 from scrapping import doc_to_node 
 from llama_index.core import(
         Document, 
@@ -32,7 +32,3 @@ if __name__ == "__main__" :
     #     print(index)
 
     __import__('pprint').pprint(storage_context)
-
-    vector_store = 
-    index_store = VectorStoreIndex.from_vector_store()
-    pprint(vector_store)

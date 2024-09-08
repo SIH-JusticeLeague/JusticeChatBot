@@ -1,10 +1,12 @@
+import dotenv
+import os
+
 from weaviate import (
         WeaviateClient,
         connect_to_custom
         )
+
 from llama_index.vector_stores.weaviate import WeaviateVectorStore 
-import dotenv
-import os
 
 # loading environmental variables 
 dotenv.load_dotenv()
@@ -40,7 +42,7 @@ def init_client(embed_model: str) -> WeaviateClient | None:
     except Exception as e:
         print(f"Error connecting to Weaviate: {e}")
 
-    return None
+    return client
 
 
 
@@ -49,7 +51,7 @@ if __name__ == "__main__" :
     if isinstance(client, WeaviateClient): 
         vector_store = WeaviateVectorStore(
                 weaviate_client= client,
-                index_name= "LlamaIndex"
+                index_name= "WeaviateVectorStore"
                 ) 
 
         client.close()

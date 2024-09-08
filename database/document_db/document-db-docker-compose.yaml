@@ -1,0 +1,21 @@
+services:
+    # DOCUMENT DB
+  redis_document_store:
+    image: redis/redis-stack:latest 
+    container_name: redis_document_store
+    ports:
+      - "8082:8001"
+    restart: on-failure:0 
+    volumes:
+      - ./DocumentDB:/var/lib/documentdb
+    networks:
+      - redisnet
+
+
+networks:
+  redisnet:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local

@@ -1,0 +1,20 @@
+services:
+    # INDEX DB
+  redis_index_store:
+    image: redis/redis-stack:latest 
+    container_name: redis_index_store
+    ports:
+      - "8081:8001" 
+    restart: on-failure:0 
+    volumes:
+      - ./IndexDB:/var/lib/indexdb
+    networks:
+      - redisnet
+
+networks:
+  redisnet:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local

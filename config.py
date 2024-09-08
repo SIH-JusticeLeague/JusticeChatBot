@@ -6,24 +6,32 @@ from llama_index.core import(
         StorageContext
         )
 from llama_index.core.node_parser import MarkdownNodeParser
+from llama_index.core.memory import ChatMemoryBuffer
+
+# storage 
 from llama_index.vector_stores.weaviate import WeaviateVectorStore
+from llama_index.storage.index_store.redis import RedisIndexStore
+from llama_index.storage.docstore.redis import RedisDocumentStore
+from llama_index.storage.chat_store.redis import RedisChatStore
 
 from llama_index.llms.huggingface import HuggingFaceLLM
 from transformers import AutoTokenizer, BitsAndBytesConfig
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
-from database.vector_store import weaviate
+from database.vector_db import vector_db
+from database.index_db import index_db
+from database.document_db import document_db
+from database.chat_db import chat_db
 
-# to avoiding warning
-# from pydantic._internal import _fields, _config
-# _fields.model_config['protected_namespaces'] = ()
 
 # loading environmental variables 
 dotenv.load_dotenv()
 HUGGING_FACE_KEY = os.getenv("HUGGING_FACE_KEY")
 EMBED_MODEL_NAME = os.getenv("EMBED_MODEL_NAME")
 LLM = os.getenv("LLM")
+TOKEN_LIMIT = int(os.getenv("TOKEN_LIMIT"))
 
+assert isinstance(TOKEN_LIMIT, int) , "Environment Variable TOKEN_LIMIT must be an INTEGER"
 
 
 node_parser = MarkdownNodeParser(
@@ -44,7 +52,6 @@ if not EMBED_MODEL_NAME :
 # setting global embedding model
 print(f"Embedding Model : {str(EMBED_MODEL_NAME)}")
 Settings.embed_model = HuggingFaceEmbedding(str(EMBED_MODEL_NAME))
-
 
 
 
@@ -73,19 +80,40 @@ Settings.tokenizer = AutoTokenizer.from_pretrained(str(LLM))
 
 # setting global transformation
 
-
-# setting gloabl Document Store
-# setting global Chat Store
 storage_context = StorageContext.from_defaults(
         # setting global Vector Store
         vector_store = WeaviateVectorStore(
-                        weaviate_client= weaviate.init_client(str(EMBED_MODEL_NAME)),
-                        index_name= "WeaviateIndex"
-                        ) 
+                        weaviate_client= vector_db.init_client(str(EMBED_MODEL_NAME)),
+                        index_name= "WeaviateVectorStore"
+                        ),
+        # setting global Index Store
+        index_store= RedisIndexStore(
+                        redis_kvstore= index_db.init_client(),
+                        namespace= "RedisIndexStore"
+                        ),
+        # setting global Document Store
+        docstore = RedisDocumentStore(
+                        redis_kvstore= document_db.init_client(),
+                        namespace= "RediDocumentStore"
+                        )
         )
+
+chat_memory = ChatMemoryBuffer.from_defaults(
+        # setting global Chat Store
+        chat_store= RedisChatStore(
+                        redis_client= chat_db.init_client()
+                        ),
+        token_limit= TOKEN_LIMIT
+        )
+
+
+print("Gobal config finished setup ...")
 
 # setting global prompt format
 
 # setting global retrieval format
 
 # setting global print format
+
+if __name__ == "__main__" :
+    pass 
