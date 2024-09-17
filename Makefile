@@ -1,6 +1,9 @@
 main : 
 	echo "use run-<store_type>store to run container and stop-all-container to stop all"
 
+main setup : pip-requirement.txt
+	pip install -r pip-requirement.txt 
+
 run-all-store : run-index-store run-vector-store run-document-store run-chat-store
 	make run-index-store
 	make run-vector-store
