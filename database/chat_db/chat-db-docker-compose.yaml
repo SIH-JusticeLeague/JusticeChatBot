@@ -4,7 +4,7 @@ services:
     image: redis/redis-stack:latest 
     container_name: redis_chat_store
     ports:
-      - "8083:8001"
+      - "8083:6379"
     restart: on-failure:0 
     volumes:
       - ./ChatDB:/var/lib/chatdb
