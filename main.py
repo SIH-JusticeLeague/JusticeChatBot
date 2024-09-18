@@ -11,7 +11,7 @@ from llama_index.core import(
 
 # from llama_index.vector_stores.weaviate import WeaviateVectorStore
 import time
-
+from transformers import BitsAndBytesConfig
 
 if __name__ == "__main__" : 
 

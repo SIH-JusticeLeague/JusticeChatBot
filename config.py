@@ -23,6 +23,9 @@ from database.index_db import index_db
 from database.document_db import document_db
 from database.chat_db import chat_db
 
+from torch import float16
+import torch
+
 
 # loading environmental variables 
 dotenv.load_dotenv()
@@ -60,13 +63,21 @@ if not LLM :
 
 print(f"LLM and Tokenizer: {str(LLM)}")
 
+# quantization 
+quantization_config = BitsAndBytesConfig(
+        load_in_4bit= True,
+        bnb_4bit_compute_dtype= float16,
+        bnb_4bit_quant_type= "nf4",
+        bnb_4bit_use_double_quant=True
+)
+
 # setting global LLM 
 Settings.llm = HuggingFaceLLM(
     model_name= str(LLM),
     tokenizer_name=str(LLM),
-    context_window=8192,
+    context_window=4096,
     # max_new_tokens=256,
-    # model_kwargs={"quantization_config": quantization_config},
+    model_kwargs={"quantization_config": quantization_config},
     generate_kwargs={"temperature": 0.1, "top_p": 0.9},
     # messages_to_prompt=messages_to_prompt,
     # completion_to_prompt=completion_to_prompt,
