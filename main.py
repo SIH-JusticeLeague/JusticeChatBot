@@ -13,6 +13,15 @@ from llama_index.core import(
 import time
 from transformers import BitsAndBytesConfig
 
+index = load_index_from_storage(storage_context = storage_context)
+pprint(index)
+
+engine = index.as_query_engine()
+
+def output(query : str, engine = engine ) -> str: 
+        response = engine.query(output)
+        return response.response
+
 if __name__ == "__main__" : 
 
 #     initializing vector database
@@ -38,6 +47,6 @@ if __name__ == "__main__" :
     loading from persist method
     '''
 
-    index = load_index_from_storage(storage_context = storage_context)
-    pprint(index)
+   
+
 
