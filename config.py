@@ -14,7 +14,7 @@ from llama_index.storage.index_store.redis import RedisIndexStore
 from llama_index.storage.docstore.redis import RedisDocumentStore
 from llama_index.storage.chat_store.redis import RedisChatStore
 
-from llama_index.llms.huggingface import HuggingFaceLLM
+from llama_index.llms.huggingface import HuggingFaceLLM, HuggingFaceInferenceAPI
 from transformers import AutoTokenizer, BitsAndBytesConfig
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
@@ -24,7 +24,7 @@ from database.document_db import document_db
 from database.chat_db import chat_db
 
 from torch import float16
-import torch
+# import torch
 
 
 # loading environmental variables 
@@ -72,7 +72,7 @@ quantization_config = BitsAndBytesConfig(
 )
 
 # setting global LLM 
-Settings.llm = HuggingFaceLLM(
+Settings.llm = HuggingFaceInferenceAPI(
     model_name= str(LLM),
     tokenizer_name=str(LLM),
     context_window=4096,
