@@ -5,6 +5,7 @@ from llama_index.core import(
         Settings,   
         StorageContext
         )
+
 from llama_index.core.node_parser import MarkdownNodeParser
 from llama_index.core.memory import ChatMemoryBuffer
 
@@ -24,7 +25,6 @@ from database.document_db import document_db
 from database.chat_db import chat_db
 
 from torch import float16
-import torch
 
 
 # loading environmental variables 
