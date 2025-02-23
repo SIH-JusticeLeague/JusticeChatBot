@@ -1,116 +1,104 @@
 # JusticeChatBot
-AI-based interactive chat-bot for the Department of Justice’s website
 
-## Problem Statement Details
-Problem Statement ID: **PS1700**
+## AI-based Interactive Chatbot for the Department of Justice’s Website
 
-Organization: Ministry of Law and Justice
+### Problem Statement Details
 
-Department: Department of Justice
+- **Problem Statement ID:** PS1700  
+- **Organization:** Ministry of Law and Justice  
+- **Department:** Department of Justice  
+- **Theme:** Smart Automation  
+- **Dataset Link:** [Department of Justice](https://doj.gov.in/)  
 
-Theme: Smart Automation
+---
 
-Dataset Link: <https://doj.gov.in/>
-
-## Problem Statement Description
-
-### Overview
-The Department of Justice (DoJ) in India, which operates under the Ministry of Law & Justice, is responsible for a range of activities aimed at improving the judicial system. This includes developing infrastructure, establishing special courts, implementing eCourt projects, providing legal aid, and offering financial assistance for training judicial officers.
+## Overview
+The Department of Justice (DoJ) in India, under the Ministry of Law & Justice, is responsible for enhancing the judicial system through initiatives such as infrastructure development, special courts, eCourt projects, legal aid services, and judicial training programs.
 
 ### Problem Statement
-The task is to create an interactive chatbot or virtual assistant for the Department of Justice’s website. This chatbot will help users by providing accurate and timely information on a variety of topics related to the DoJ and its functions.
+The goal is to develop an AI-powered chatbot for the Department of Justice’s website to assist users in obtaining accurate and timely information regarding judicial matters.
 
-### Objectives of the Chatbot
-1. Provide Information on DoJ Divisions:
+## Objectives of the Chatbot
 
-   Users should be able to inquire about the different divisions and functions within the DoJ.
+1. **Provide Information on DoJ Divisions:**  
+   Users should be able to inquire about different divisions and functions within the DoJ.
 
-3. Judge Appointments and Vacancies:
+2. **Judge Appointments and Vacancies:**  
+   The chatbot should provide details on the number of judges across Supreme Court, High Courts, District Courts, and Subordinate Courts, along with current vacancies.
 
-   The chatbot should provide information on the number of judges in the Supreme Court, High Courts, District Courts, and Subordinate Courts, as well as current vacancies.
+3. **Case Pendency Data:**  
+   Access information about case pendency through the National Judicial Data Grid (NJDG).
 
-4. Case Pendency Data:
+4. **Traffic Violation Fines:**  
+   Guide users on the procedure for paying fines related to traffic violations.
 
-   Users should be able to access information about the pendency of cases through the National Judicial Data Grid (NJDG).
+5. **Live Streaming of Court Cases:**  
+   Provide information on how users can access live court case streams.
 
-5. Traffic Violation Fines:
+6. **eFiling and ePay Procedures:**  
+   Offer step-by-step guidance on eFiling and ePay services.
 
-   The chatbot should explain the procedure for paying fines related to traffic violations.
+7. **Fast Track Courts:**  
+   Explain the purpose of Fast Track Courts, especially those dealing with sensitive cases like rape and POCSO Act cases.
 
-6. Live Streaming of Court Cases:
+8. **eCourts Services Mobile App:**  
+   Assist users in downloading and using the eCourts Services mobile app.
 
-   Users should get information on how to access live streaming of court cases.
+9. **Tele Law Services:**  
+   Inform users about how to avail Tele Law Services.
 
-6. eFiling and ePay Procedures:
+10. **Case Status Inquiry:**  
+    Users should be able to check the current status of their cases.
 
-   Provide steps and guidance on eFiling and ePay services.
+---
 
-8. Fast Track Courts:
+## Features of the Chatbot
 
-   Explain the function and purpose of Fast Track Courts, particularly those dealing with sensitive cases like rape and POCSO Act cases.
+- **Interactive User Interface:**
+  A user-friendly interface for seamless interaction.
 
-9. eCourts Services Mobile App:
+- **Natural Language Processing (NLP):**  
+  Advanced NLP capabilities for accurate query interpretation.
 
-   Guide users on how to download and use the eCourts Services mobile app.
+- **Integration with Data Sources:**  
+  Connects with databases such as NJDG and eCourts services.
 
-10. Tele Law Services:
+- **Learning Capabilities:**  
+  Machine learning algorithms to improve over time.
 
-    Inform users about how to avail Tele Law Services.
+- **Handling Large Data Sets:**  
+  Scalable system capable of processing large data volumes.
 
-12. Case Status:
+- **Real-Time Updates:**  
+  Provides instant updates on case statuses and vacancies.
 
-    Users should be able to inquire about the current status of their cases.
+- **Multilingual Support:**  
+  Supports multiple languages for a diverse user base.
 
-### Features of the Chatbot:
-1. Interactive User Interface:
+---
 
-   The chatbot should have a user-friendly interface that allows easy interaction.
+## System Architecture
+![JusticeChatBot System Architecture](image.png)
 
-2. Natural Language Processing (NLP):
+The chatbot utilizes **multi-lingual speech recognition** and **embedding-based semantic search** to process queries and retrieve relevant information from a **vector database**. The **OpenHathi LLM** by SarvamAI ensures a meaningful response generation.
 
-   Employ advanced NLP techniques to understand and process user queries effectively.
+---
 
-3. Integration with Data Sources:
+## Project Milestones
 
-   The chatbot should be integrated with relevant databases and platforms, such as the National Judicial Data Grid (NJDG) and eCourts services.
+- [ ] **Tech-stack selection** *(in progress)*
+- [ ] **System design** *(in progress)*
+- [ ] **Data collection, scraping, and cleaning**
+- [ ] **Retrieval-Augmented Generation (RAG) implementation**
+- [ ] **Front-end design**
+- [ ] **Back-end design**
+- [ ] **Database design**
+- [ ] **API structuring**
+- [ ] **Unit testing**
+- [ ] **Integration testing**
 
-4. Learning Capabilities:
+---
 
-   Implement machine learning algorithms to allow the chatbot to learn from interactions and improve over time.
+## Conclusion
+The JusticeChatBot will significantly enhance user experience by providing instant and accurate information on legal matters. It will simplify legal processes, ensuring greater accessibility and transparency in the judicial system.
 
-5. Handling Large Data Sets:
-
-   The system should be scalable and capable of managing and processing large volumes of data.
-
-6. Real-Time Updates:
-
-   Ensure that the chatbot provides real-time updates on case statuses and vacancies.
-
-8. Multilingual Support (Key Seller ??):
-
-   Consider including support for multiple languages to cater to a diverse user base.
-
-### Milestones
-
-- [ ] Tech-stack selection (in progress)
-
-- [ ] System design (in progress)
-
-- [ ] Data collection, scraping and cleaning
-
-- [ ] RAG implementation
-
-- [ ] Front-end design
-
-- [ ] Back-end design
-
-- [ ] Database design
-
-- [ ] API structuring
-
-- [ ] Unit testing
-
-- [ ] Integration testing
-
-### Conclusion
-The creation of a chatbot for the Department of Justice will enhance user experience by providing instant, accurate information on various judicial matters. It will support users in navigating the complex legal landscape and accessing services more efficiently, ultimately contributing to a more streamlined and transparent justice system.
