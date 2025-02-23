@@ -3,93 +3,62 @@
 ## AI-based Interactive Chatbot for the Department of Justice’s Website
 
 ### Problem Statement Details
-
-- **Problem Statement ID:** PS1700  
-- **Organization:** Ministry of Law and Justice  
-- **Department:** Department of Justice  
-- **Theme:** Smart Automation  
-- **Dataset Link:** [Department of Justice](https://doj.gov.in/)  
+**Problem Statement ID:** PS1700  
+**Organization:** Ministry of Law and Justice  
+**Department:** Department of Justice  
+**Theme:** Smart Automation  
+**Dataset Link:** [Department of Justice](https://doj.gov.in/)
 
 ---
 
 ## Overview
-The Department of Justice (DoJ) in India, under the Ministry of Law & Justice, is responsible for enhancing the judicial system through initiatives such as infrastructure development, special courts, eCourt projects, legal aid services, and judicial training programs.
+The Department of Justice (DoJ) in India operates under the Ministry of Law & Justice. It oversees judicial infrastructure development, special courts, eCourt projects, legal aid, and training programs for judicial officers.
 
 ### Problem Statement
-The goal is to develop an AI-powered chatbot for the Department of Justice’s website to assist users in obtaining accurate and timely information regarding judicial matters.
-
-## Objectives of the Chatbot
-
-1. **Provide Information on DoJ Divisions:**  
-   Users should be able to inquire about different divisions and functions within the DoJ.
-
-2. **Judge Appointments and Vacancies:**  
-   The chatbot should provide details on the number of judges across Supreme Court, High Courts, District Courts, and Subordinate Courts, along with current vacancies.
-
-3. **Case Pendency Data:**  
-   Access information about case pendency through the National Judicial Data Grid (NJDG).
-
-4. **Traffic Violation Fines:**  
-   Guide users on the procedure for paying fines related to traffic violations.
-
-5. **Live Streaming of Court Cases:**  
-   Provide information on how users can access live court case streams.
-
-6. **eFiling and ePay Procedures:**  
-   Offer step-by-step guidance on eFiling and ePay services.
-
-7. **Fast Track Courts:**  
-   Explain the purpose of Fast Track Courts, especially those dealing with sensitive cases like rape and POCSO Act cases.
-
-8. **eCourts Services Mobile App:**  
-   Assist users in downloading and using the eCourts Services mobile app.
-
-9. **Tele Law Services:**  
-   Inform users about how to avail Tele Law Services.
-
-10. **Case Status Inquiry:**  
-    Users should be able to check the current status of their cases.
+The goal is to develop an interactive chatbot for the Department of Justice’s website that provides users with accurate and timely legal information.
 
 ---
 
-## Features of the Chatbot
+## Objectives of the Chatbot
 
-- **Interactive User Interface:**
-  A user-friendly interface for seamless interaction.
+1. **Department Information:** Users can inquire about different DoJ divisions and their functions.
+2. **Judge Appointments and Vacancies:** Provides data on judges in various courts and current vacancies.
+3. **Case Pendency Data:** Access information via the National Judicial Data Grid (NJDG).
+4. **Traffic Violation Fines:** Explains the fine payment procedure.
+5. **Live Court Streaming:** Guides users on accessing live court proceedings.
+6. **eFiling and ePay Services:** Provides instructions for online legal services.
+7. **Fast Track Courts:** Information about specialized courts handling sensitive cases.
+8. **eCourts Mobile App:** Guides users on app usage.
+9. **Tele Law Services:** Provides access to online legal consultation.
+10. **Case Status Checking:** Enables users to track case statuses.
 
-- **Natural Language Processing (NLP):**  
-  Advanced NLP capabilities for accurate query interpretation.
+---
 
-- **Integration with Data Sources:**  
-  Connects with databases such as NJDG and eCourts services.
+## Features
 
-- **Learning Capabilities:**  
-  Machine learning algorithms to improve over time.
-
-- **Handling Large Data Sets:**  
-  Scalable system capable of processing large data volumes.
-
-- **Real-Time Updates:**  
-  Provides instant updates on case statuses and vacancies.
-
-- **Multilingual Support:**  
-  Supports multiple languages for a diverse user base.
+- **User-Friendly Interface:** Intuitive chatbot design for easy interaction.
+- **Natural Language Processing (NLP):** Advanced NLP for query understanding.
+- **Data Integration:** Connected to NJDG and eCourts services.
+- **Machine Learning:** Learns from interactions for improved responses.
+- **Scalability:** Handles large datasets efficiently.
+- **Real-Time Updates:** Provides real-time case and vacancy updates.
+- **Multilingual Support:** Supports multiple Indian languages.
 
 ---
 
 ## System Architecture
-![JusticeChatBot System Architecture](image.png)
+The chatbot follows a Retrieval-Augmented Generation (RAG) approach using a vector database, query embedding, and multi-lingual NLP models. The system pipeline is shown in the diagram below:
 
-The chatbot utilizes **multi-lingual speech recognition** and **embedding-based semantic search** to process queries and retrieve relevant information from a **vector database**. The **OpenHathi LLM** by SarvamAI ensures a meaningful response generation.
+![System Architecture](./mnt/data/Screenshot from 2025-02-24 01-02-58.png)
 
 ---
 
-## Project Milestones
+## Milestones
 
-- [ ] **Tech-stack selection** *(in progress)*
-- [ ] **System design** *(in progress)*
+- [ ] **Tech-stack selection** (In progress)
+- [ ] **System design** (In progress)
 - [ ] **Data collection, scraping, and cleaning**
-- [ ] **Retrieval-Augmented Generation (RAG) implementation**
+- [ ] **RAG implementation**
 - [ ] **Front-end design**
 - [ ] **Back-end design**
 - [ ] **Database design**
@@ -100,5 +69,5 @@ The chatbot utilizes **multi-lingual speech recognition** and **embedding-based 
 ---
 
 ## Conclusion
-The JusticeChatBot will significantly enhance user experience by providing instant and accurate information on legal matters. It will simplify legal processes, ensuring greater accessibility and transparency in the judicial system.
+Developing a chatbot for the Department of Justice will streamline access to legal information and services, making the justice system more efficient and accessible for all citizens.
 
