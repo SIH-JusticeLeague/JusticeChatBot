@@ -49,7 +49,7 @@ The goal is to develop an interactive chatbot for the Department of Justice’s 
 ## System Architecture
 The chatbot follows a Retrieval-Augmented Generation (RAG) approach using a vector database, query embedding, and multi-lingual NLP models. The system pipeline is shown in the diagram below:
 
-![System Architecture](./mnt/data/Screenshot from 2025-02-24 01-02-58.png)
+![System Architecture](./images/system_architecture.png)
 
 ---
 
@@ -70,4 +70,3 @@ The chatbot follows a Retrieval-Augmented Generation (RAG) approach using a vect
 
 ## Conclusion
 Developing a chatbot for the Department of Justice will streamline access to legal information and services, making the justice system more efficient and accessible for all citizens.
-
