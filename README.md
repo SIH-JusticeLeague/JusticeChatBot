@@ -67,9 +67,6 @@ The chatbot utilizes a **Retrieval-Augmented Generation (RAG) approach** with a 
 
 ---
 
-## 🙌 Contributors  
-
-👤 **Your Name** | 👤 **Team Members**  
 
 💬 **Have suggestions or feedback?** Open an issue or start a discussion!  
 ⭐ **If you found this project useful, give it a star!**  
